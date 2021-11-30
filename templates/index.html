@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Recognition in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+</head>
+<body>
+<div id="speechContainer">
+    <h1>Upload Audio File</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <br>
+        <br>
+        <input type="submit" id="submitButton" value="Convert Voice"/>
+    </form>
+
+    
+
+    {% if transcript != "" %}
+        <div id="speechTranscriptContainer">
+            <h1>Translate</h1>
+            <div id="file"></div>
+            <p id="speechText">{{ transcript }}</p>
+            <p id="date"></p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+<script>
+    document.getElementById("date").innerHTML = Date();
+</script>
+
+
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'file');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</html>
